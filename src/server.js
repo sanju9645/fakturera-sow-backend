@@ -3,6 +3,8 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import { connectDatabase, checkDatabaseConnection } from './config/db.js';
 
+import translationRoutes from './routes/translation.routes.js';
+
 dotenv.config();
 
 const app = express();
@@ -42,6 +44,9 @@ app.get('/health', async (req, res) => {
   });
 });
 
+// API routes
+app.use('/api/translations', translationRoutes);
+
 // 404 handler
 app.use((req, res) => {
   res.status(404).json({
@@ -69,7 +74,6 @@ app.use((err, req, res, next) => {
   try {
     // Connect to database
     await connectDatabase();
-    
     app.listen(PORT, () => {
       console.log(`Server running on ${BACKEND_URL}`);
       console.log(`Environment: ${process.env.NODE_ENV || 'development'}`);

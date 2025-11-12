@@ -1,4 +1,4 @@
--- Migration: 001_initial_schema.sql
+-- Migration: schema.sql
 -- Description: Creates initial database schema for fakturera-sow
 
 -- ============================================

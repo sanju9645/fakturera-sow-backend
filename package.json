@@ -6,9 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "server": "nodemon src/server.js",
-    "start": "node src/server.js",
-    "dev": "nodemon src/server.js",
-    "migrate": "node src/tools/create-tables.js"
+    "start": "node src/tools/run-tweaks.js && node src/server.js",
+    "dev": "node src/tools/run-tweaks.js && nodemon src/server.js",
+    "migrate": "node src/tools/run-tweaks.js"
   },
   "repository": {
     "type": "git",

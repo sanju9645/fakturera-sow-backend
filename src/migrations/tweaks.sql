@@ -54,3 +54,23 @@ INSERT INTO translations (language_code, translation_key, translation_value, cat
 
 ON CONFLICT (language_code, translation_key) DO NOTHING;
 
+
+-- ============================================
+-- SEED DATA: LOGIN ERROR MESSAGES
+-- ============================================
+INSERT INTO translations (language_code, translation_key, translation_value, category) VALUES
+-- Login
+('en', 'login.invalidEmailLabel', 'Please enter a valid email address', 'login'),
+('en', 'login.invalidPasswordLabel', 'This field cannot be empty', 'login'),
+('sv', 'login.invalidEmailLabel', 'Vänligen skriv in en giltig epost adress', 'login'),
+('sv', 'login.invalidPasswordLabel', 'Detta fält kan inte vara tomt', 'login')
+
+ON CONFLICT (language_code, translation_key) DO NOTHING;
+
+
+-- ============================================
+-- SEED DATA: Demo User
+-- ============================================
+INSERT INTO users (email, password_hash, first_name, last_name, is_active)
+VALUES ('test@example.com', '$2a$10$FSypipoM7yJNyjrRfR.2ducIlXCZYMpzGrchCNfsq6vJXM4pTmLme', 'Test', 'User', true)
+ON CONFLICT (email) DO NOTHING;

@@ -86,3 +86,15 @@ INSERT INTO translations (language_code, translation_key, translation_value, cat
 ('sv', 'login.userNotFoundError', 'Användaren finns inte', 'login')
 
 ON CONFLICT (language_code, translation_key) DO NOTHING;
+
+-- ============================================
+-- SEED DATA: NOTFOUND
+-- ============================================
+INSERT INTO translations (language_code, translation_key, translation_value, category) VALUES
+-- Login
+('en', 'notfound.pageNotFoundError', 'Oops! Page not found', 'notfound'),
+('en', 'notfound.returnToHome', 'Return to Home', 'notfound'),
+('sv', 'notfound.pageNotFoundError', 'Hoppsan! Sidan hittades inte', 'notfound'),
+('sv', 'notfound.returnToHome', 'Tillbaka till startsidan', 'notfound')
+
+ON CONFLICT (language_code, translation_key) DO NOTHING;

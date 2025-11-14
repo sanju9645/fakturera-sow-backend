@@ -32,9 +32,9 @@ class AuthMiddleware {
       req.user = decoded;
       next();
     } catch (error) {
-      return res.status(401).json({
+      return res.status(500).json({
         success: false,
-        message: 'Invalid or expired token'
+        message: 'Token verification failed'
       });
     }
   }

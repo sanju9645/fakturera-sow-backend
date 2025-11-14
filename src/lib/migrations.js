@@ -65,19 +65,66 @@ export function migrationExtractOperationName(statement) {
 
 /**
  * Split SQL content into individual statements
- * Handles multi-line statements and preserves quoted strings
+ * Handles multi-line statements and preserves quoted strings (including dollar-quoting)
  */
 export function migrationSplitStatements(cleanedSql) {
   const statements = [];
   let currentStatement = '';
   let inQuotes = false;
   let quoteChar = null;
+  let inDollarQuote = false;
+  let dollarTag = null;
+  let dollarTagBuffer = '';
 
   for (let i = 0; i < cleanedSql.length; i++) {
     const char = cleanedSql[i];
     const prevChar = i > 0 ? cleanedSql[i - 1] : '';
 
-    if ((char === '"' || char === "'") && prevChar !== '\\') {
+    // Handle dollar-quoting (e.g., $tag$...$tag$)
+    if (char === '$' && !inQuotes) {
+      if (!inDollarQuote) {
+        // Start of dollar quote - collect the tag
+        dollarTagBuffer = '$';
+        let j = i + 1;
+        while (j < cleanedSql.length && cleanedSql[j] !== '$') {
+          dollarTagBuffer += cleanedSql[j];
+          j++;
+        }
+        if (j < cleanedSql.length && cleanedSql[j] === '$') {
+          dollarTagBuffer += '$';
+          dollarTag = dollarTagBuffer;
+          inDollarQuote = true;
+          // Add the opening tag to current statement
+          currentStatement += dollarTagBuffer;
+          i = j; // Skip ahead - the closing $ will be handled in next iteration
+          continue;
+        }
+      } else {
+        // We're in a dollar quote and see a $ - check if it's the closing tag
+        let potentialTag = '$';
+        let j = i + 1;
+        // Read characters until we hit $ or exceed tag length
+        while (j < cleanedSql.length && cleanedSql[j] !== '$' && potentialTag.length < dollarTag.length) {
+          potentialTag += cleanedSql[j];
+          j++;
+        }
+        if (j < cleanedSql.length && cleanedSql[j] === '$') {
+          potentialTag += '$';
+          if (potentialTag === dollarTag) {
+            // Found closing tag - add it and exit dollar quote mode
+            currentStatement += potentialTag;
+            inDollarQuote = false;
+            dollarTag = null;
+            dollarTagBuffer = '';
+            i = j; // Skip ahead - we've already added the closing tag
+            continue;
+          }
+        }
+      }
+    }
+
+    // Handle regular quotes (only if not in dollar quote)
+    if (!inDollarQuote && (char === '"' || char === "'") && prevChar !== '\\') {
       if (!inQuotes) {
         inQuotes = true;
         quoteChar = char;
@@ -89,8 +136,8 @@ export function migrationSplitStatements(cleanedSql) {
 
     currentStatement += char;
 
-    // If we hit a semicolon and we're not in quotes, it's the end of a statement
-    if (char === ';' && !inQuotes) {
+    // If we hit a semicolon and we're not in quotes or dollar quotes, it's the end of a statement
+    if (char === ';' && !inQuotes && !inDollarQuote) {
       const trimmed = currentStatement.trim();
       if (trimmed.length > 0) {
         statements.push(trimmed);

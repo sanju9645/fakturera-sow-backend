@@ -5,7 +5,6 @@ export class TranslationController {
     try {
       // Get all translations as nested objects for all languages
       const allTranslations = await Translation.translationsAsNestedObject();
-      
       if (Object.keys(allTranslations).length === 0) {
         return res.status(404).json({
           success: false,

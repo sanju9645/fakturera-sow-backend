@@ -4,6 +4,8 @@ import dotenv from 'dotenv';
 import { connectDatabase, checkDatabaseConnection } from './config/db.js';
 
 import translationRoutes from './routes/translation.routes.js';
+import authRoutes from './routes/auth.routes.js';
+import pricelistRoutes from './routes/pricelist.routes.js';
 
 dotenv.config();
 
@@ -46,6 +48,8 @@ app.get('/health', async (req, res) => {
 
 // API routes
 app.use('/api/translations', translationRoutes);
+app.use('/api/auth', authRoutes);
+app.use('/api/pricelist', pricelistRoutes);
 
 // 404 handler
 app.use((req, res) => {

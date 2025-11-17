@@ -43,3 +43,27 @@ CREATE TABLE users (
 CREATE INDEX IF NOT EXISTS idx_users_email ON users(email);
 CREATE INDEX IF NOT EXISTS idx_users_username ON users(username);
 CREATE INDEX IF NOT EXISTS idx_users_active ON users(is_active);
+
+
+-- ============================================
+-- PRODUCTS TABLE
+-- ============================================
+CREATE TABLE IF NOT EXISTS products (
+  id SERIAL PRIMARY KEY,
+  user_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+  article_no VARCHAR(50) NOT NULL,
+  name VARCHAR(255) NOT NULL,
+  in_price NUMERIC(15, 2) NOT NULL,
+  price NUMERIC(15, 2) NOT NULL,
+  unit VARCHAR(50) NOT NULL,
+  in_stock NUMERIC(15, 2) NOT NULL DEFAULT 0,
+  description TEXT,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  UNIQUE(user_id, article_no)
+);
+
+-- Indexes for products
+CREATE INDEX IF NOT EXISTS idx_products_user_id ON products(user_id);
+CREATE INDEX IF NOT EXISTS idx_products_article_no ON products(article_no);
+CREATE INDEX IF NOT EXISTS idx_products_name ON products(name);

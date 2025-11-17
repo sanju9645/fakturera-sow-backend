@@ -164,3 +164,50 @@ Ha en trevlig dag!', 'terms')
 
 ON CONFLICT (language_code, translation_key) DO NOTHING;
 
+-- ============================================
+-- SEED DATA: PRODUCTS
+-- ============================================
+INSERT INTO products (user_id, article_no, name, in_price, price, unit, in_stock, description) VALUES
+((SELECT id FROM users WHERE email = 'test@example.com' LIMIT 1), '1234567890', 'This is a test product with fifty characters this!', 900500.00, 1500800.00, 'kilometers/hour', 2500600.00, 'This is the description with fifty characters this'),
+((SELECT id FROM users WHERE email = 'test@example.com' LIMIT 1), '2345678901', 'Sony DSLR 12345', 12000.00, 15000.00, 'piece', 50.00, 'Professional camera'),
+((SELECT id FROM users WHERE email = 'test@example.com' LIMIT 1), '3456789012', 'Random product', 1000.00, 1234.00, 'piece', 100.00, 'Random product description'),
+((SELECT id FROM users WHERE email = 'test@example.com' LIMIT 1), '4567890123', 'Product Four', 5000.00, 7500.00, 'piece', 200.00, 'Product four description'),
+((SELECT id FROM users WHERE email = 'test@example.com' LIMIT 1), '5678901234', 'Product Five', 3000.00, 4500.00, 'piece', 150.00, 'Product five description'),
+((SELECT id FROM users WHERE email = 'test@example.com' LIMIT 1), '6789012345', 'Wireless Headphones Pro', 2500.00, 3500.00, 'piece', 75.00, 'High-quality wireless headphones with noise cancellation'),
+((SELECT id FROM users WHERE email = 'test@example.com' LIMIT 1), '7890123456', 'Smartphone Case Premium', 150.00, 299.00, 'piece', 500.00, 'Durable protective case for smartphones'),
+((SELECT id FROM users WHERE email = 'test@example.com' LIMIT 1), '8901234567', 'USB-C Cable 2m', 50.00, 99.00, 'piece', 1000.00, 'Fast charging USB-C cable'),
+((SELECT id FROM users WHERE email = 'test@example.com' LIMIT 1), '9012345678', 'Laptop Stand Aluminum', 800.00, 1200.00, 'piece', 120.00, 'Ergonomic aluminum laptop stand'),
+((SELECT id FROM users WHERE email = 'test@example.com' LIMIT 1), '0123456789', 'Mechanical Keyboard RGB', 3500.00, 4999.00, 'piece', 60.00, 'RGB mechanical gaming keyboard'),
+((SELECT id FROM users WHERE email = 'test@example.com' LIMIT 1), '1122334455', 'Gaming Mouse Wireless', 1200.00, 1800.00, 'piece', 200.00, 'Precision wireless gaming mouse'),
+((SELECT id FROM users WHERE email = 'test@example.com' LIMIT 1), '2233445566', 'Monitor 27 inch 4K', 15000.00, 22000.00, 'piece', 30.00, 'Ultra HD 4K monitor'),
+((SELECT id FROM users WHERE email = 'test@example.com' LIMIT 1), '3344556677', 'Webcam HD 1080p', 800.00, 1200.00, 'piece', 150.00, 'High definition webcam for video calls'),
+((SELECT id FROM users WHERE email = 'test@example.com' LIMIT 1), '4455667788', 'Microphone USB Condenser', 2000.00, 3000.00, 'piece', 80.00, 'Professional USB condenser microphone'),
+((SELECT id FROM users WHERE email = 'test@example.com' LIMIT 1), '5566778899', 'Desk Lamp LED', 400.00, 650.00, 'piece', 300.00, 'Adjustable LED desk lamp'),
+((SELECT id FROM users WHERE email = 'test@example.com' LIMIT 1), '6677889900', 'Power Bank 20000mAh', 600.00, 999.00, 'piece', 250.00, 'High capacity portable charger'),
+((SELECT id FROM users WHERE email = 'test@example.com' LIMIT 1), '7788990011', 'Bluetooth Speaker Portable', 1500.00, 2200.00, 'piece', 100.00, 'Waterproof portable Bluetooth speaker'),
+((SELECT id FROM users WHERE email = 'test@example.com' LIMIT 1), '8899001122', 'Tablet Stand Adjustable', 300.00, 500.00, 'piece', 400.00, 'Adjustable stand for tablets'),
+((SELECT id FROM users WHERE email = 'test@example.com' LIMIT 1), '9900112233', 'HDMI Cable 5m', 200.00, 350.00, 'piece', 600.00, 'High speed HDMI cable'),
+((SELECT id FROM users WHERE email = 'test@example.com' LIMIT 1), '0011223344', 'Wireless Charger Pad', 350.00, 599.00, 'piece', 350.00, 'Fast wireless charging pad'),
+((SELECT id FROM users WHERE email = 'test@example.com' LIMIT 1), '1100223344', 'Laptop Sleeve Neoprene', 250.00, 450.00, 'piece', 500.00, 'Protective neoprene laptop sleeve'),
+((SELECT id FROM users WHERE email = 'test@example.com' LIMIT 1), '2200334455', 'Mouse Pad Large', 100.00, 199.00, 'piece', 800.00, 'Large gaming mouse pad'),
+((SELECT id FROM users WHERE email = 'test@example.com' LIMIT 1), '3300445566', 'Keyboard Wrist Rest', 150.00, 250.00, 'piece', 700.00, 'Ergonomic keyboard wrist rest'),
+((SELECT id FROM users WHERE email = 'test@example.com' LIMIT 1), '4400556677', 'USB Hub 4 Ports', 300.00, 499.00, 'piece', 450.00, 'USB 3.0 hub with 4 ports'),
+((SELECT id FROM users WHERE email = 'test@example.com' LIMIT 1), '5500667788', 'Screen Protector Glass', 80.00, 150.00, 'piece', 1000.00, 'Tempered glass screen protector'),
+((SELECT id FROM users WHERE email = 'test@example.com' LIMIT 1), '6600778899', 'Laptop Cooling Pad', 500.00, 799.00, 'piece', 180.00, 'USB powered laptop cooling pad'),
+((SELECT id FROM users WHERE email = 'test@example.com' LIMIT 1), '7700889900', 'External SSD 1TB', 5000.00, 7500.00, 'piece', 50.00, 'Fast external solid state drive'),
+((SELECT id FROM users WHERE email = 'test@example.com' LIMIT 1), '8800990011', 'USB Flash Drive 128GB', 400.00, 650.00, 'piece', 300.00, 'High speed USB 3.0 flash drive'),
+((SELECT id FROM users WHERE email = 'test@example.com' LIMIT 1), '9900001122', 'Cable Management Sleeve', 50.00, 99.00, 'piece', 1200.00, 'Cable management sleeve'),
+((SELECT id FROM users WHERE email = 'test@example.com' LIMIT 1), '0000112233', 'Desk Organizer Bamboo', 200.00, 350.00, 'piece', 600.00, 'Bamboo desk organizer'),
+((SELECT id FROM users WHERE email = 'test@example.com' LIMIT 1), '1111223344', 'Monitor Arm VESA', 1200.00, 1800.00, 'piece', 90.00, 'Adjustable VESA monitor arm'),
+((SELECT id FROM users WHERE email = 'test@example.com' LIMIT 1), '2222334455', 'Laptop Bag Backpack', 800.00, 1300.00, 'piece', 150.00, 'Professional laptop backpack'),
+((SELECT id FROM users WHERE email = 'test@example.com' LIMIT 1), '3333445566', 'Standing Desk Converter', 3500.00, 5500.00, 'piece', 40.00, 'Adjustable standing desk converter'),
+((SELECT id FROM users WHERE email = 'test@example.com' LIMIT 1), '4444556677', 'Ergonomic Office Chair', 8000.00, 12000.00, 'piece', 25.00, 'Comfortable ergonomic office chair'),
+((SELECT id FROM users WHERE email = 'test@example.com' LIMIT 1), '5555667788', 'Noise Cancelling Earbuds', 1800.00, 2800.00, 'piece', 200.00, 'True wireless noise cancelling earbuds'),
+((SELECT id FROM users WHERE email = 'test@example.com' LIMIT 1), '6666778899', 'Smart Watch Fitness', 2500.00, 4000.00, 'piece', 70.00, 'Fitness tracking smart watch'),
+((SELECT id FROM users WHERE email = 'test@example.com' LIMIT 1), '7777889900', 'Tablet 10 inch', 12000.00, 18000.00, 'piece', 35.00, '10 inch Android tablet'),
+((SELECT id FROM users WHERE email = 'test@example.com' LIMIT 1), '8888990011', 'Projector Mini Portable', 6000.00, 9500.00, 'piece', 45.00, 'Portable mini projector'),
+((SELECT id FROM users WHERE email = 'test@example.com' LIMIT 1), '9999001122', 'Action Camera 4K', 3500.00, 5500.00, 'piece', 55.00, 'Waterproof 4K action camera'),
+((SELECT id FROM users WHERE email = 'test@example.com' LIMIT 1), '1011121314', 'Drone Quadcopter', 15000.00, 25000.00, 'piece', 20.00, 'Professional drone with camera')
+
+ON CONFLICT (user_id, article_no) DO NOTHING;
+

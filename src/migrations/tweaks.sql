@@ -71,8 +71,8 @@ ON CONFLICT (language_code, translation_key) DO NOTHING;
 -- ============================================
 -- SEED DATA: Demo User
 -- ============================================
-INSERT INTO users (email, password_hash, first_name, last_name, is_active)
-VALUES ('test@example.com', '$2a$10$FSypipoM7yJNyjrRfR.2ducIlXCZYMpzGrchCNfsq6vJXM4pTmLme', 'Test', 'User', true)
+INSERT INTO users (username, email, password_hash, first_name, last_name, is_active)
+VALUES ('testuser', 'test@example.com', '$2a$10$FSypipoM7yJNyjrRfR.2ducIlXCZYMpzGrchCNfsq6vJXM4pTmLme', 'Test', 'User', true)
 ON CONFLICT (email) DO NOTHING;
 
 -- ============================================

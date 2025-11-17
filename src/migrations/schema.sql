@@ -24,8 +24,12 @@ CREATE INDEX IF NOT EXISTS idx_translations_category ON translations(category);
 -- ============================================
 -- USERS TABLE
 -- ============================================
-CREATE TABLE IF NOT EXISTS users (
+-- Drop existing users table if it exists
+DROP TABLE IF EXISTS users CASCADE;
+
+CREATE TABLE users (
   id SERIAL PRIMARY KEY,
+  username VARCHAR(100) UNIQUE NOT NULL,
   email VARCHAR(255) UNIQUE NOT NULL,
   password_hash VARCHAR(255) NOT NULL,
   first_name VARCHAR(100),
@@ -37,4 +41,5 @@ CREATE TABLE IF NOT EXISTS users (
 
 -- Indexes for users
 CREATE INDEX IF NOT EXISTS idx_users_email ON users(email);
+CREATE INDEX IF NOT EXISTS idx_users_username ON users(username);
 CREATE INDEX IF NOT EXISTS idx_users_active ON users(is_active);

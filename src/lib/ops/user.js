@@ -5,7 +5,7 @@ import bcrypt from 'bcryptjs';
 export class User {
   static async findByEmail(email) {
     const result = await query(
-      `SELECT id, email, password_hash, first_name, last_name, is_active, created_at
+      `SELECT id, username, email, password_hash, first_name, last_name, is_active, created_at
         FROM users
         WHERE email = $1`,
       [email]
@@ -16,7 +16,7 @@ export class User {
   
   static async findById(id) {
     const result = await query(
-      `SELECT id, email, first_name, last_name, is_active, created_at
+      `SELECT id, username, email, first_name, last_name, is_active, created_at
         FROM users
         WHERE id = $1 AND is_active = true`,
       [id]

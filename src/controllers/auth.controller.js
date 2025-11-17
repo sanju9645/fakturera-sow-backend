@@ -62,6 +62,7 @@ export class AuthController {
         data: {
           user: {
             id: user.id,
+            username: user.username,
             email: user.email,
             firstName: user.first_name,
             lastName: user.last_name

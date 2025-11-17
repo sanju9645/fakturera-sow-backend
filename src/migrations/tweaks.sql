@@ -165,6 +165,78 @@ Ha en trevlig dag!', 'terms')
 ON CONFLICT (language_code, translation_key) DO NOTHING;
 
 -- ============================================
+-- SEED DATA: MENU ITEMS
+-- ============================================
+INSERT INTO translations (language_code, translation_key, translation_value, category) VALUES
+-- Menu Items (English)
+('en', 'menu.invoices', 'Invoices', 'menu'),
+('en', 'menu.customers', 'Customers', 'menu'),
+('en', 'menu.myBusiness', 'My Business', 'menu'),
+('en', 'menu.invoiceJournal', 'Invoice Journal', 'menu'),
+('en', 'menu.priceList', 'Price List', 'menu'),
+('en', 'menu.multipleInvoicing', 'Multiple Invoicing', 'menu'),
+('en', 'menu.unpaidInvoices', 'Unpaid Invoices', 'menu'),
+('en', 'menu.offer', 'Offer', 'menu'),
+('en', 'menu.inventoryControl', 'Inventory Control', 'menu'),
+('en', 'menu.memberInvoicing', 'Member Invoicing', 'menu'),
+('en', 'menu.importExport', 'Import/Export', 'menu'),
+('en', 'menu.logout', 'Log out', 'menu'),
+
+-- Menu Items (Swedish)
+('sv', 'menu.invoices', 'Fakturor', 'menu'),
+('sv', 'menu.customers', 'Kunder', 'menu'),
+('sv', 'menu.myBusiness', 'Mitt företag', 'menu'),
+('sv', 'menu.invoiceJournal', 'Fakturajournal', 'menu'),
+('sv', 'menu.priceList', 'Prislista', 'menu'),
+('sv', 'menu.multipleInvoicing', 'Flerfakturering', 'menu'),
+('sv', 'menu.unpaidInvoices', 'Obetalda fakturor', 'menu'),
+('sv', 'menu.offer', 'Offert', 'menu'),
+('sv', 'menu.inventoryControl', 'Lagerstyrning', 'menu'),
+('sv', 'menu.memberInvoicing', 'Medlemsfakturering', 'menu'),
+('sv', 'menu.importExport', 'Import/Export', 'menu'),
+('sv', 'menu.logout', 'Logga ut', 'menu')
+
+ON CONFLICT (language_code, translation_key) DO NOTHING;
+
+-- ============================================
+-- SEED DATA: PRICELIST
+-- ============================================
+INSERT INTO translations (language_code, translation_key, translation_value, category) VALUES
+-- Pricelist (English)
+('en', 'pricelist.searchArticleNo', 'Search Article No...', 'pricelist'),
+('en', 'pricelist.searchProduct', 'Search Product...', 'pricelist'),
+('en', 'pricelist.newProduct', 'New Product', 'pricelist'),
+('en', 'pricelist.printList', 'Print List', 'pricelist'),
+('en', 'pricelist.advancedMode', 'Advanced mode', 'pricelist'),
+('en', 'pricelist.articleNo', 'Article No.', 'pricelist'),
+('en', 'pricelist.productService', 'Product/Service', 'pricelist'),
+('en', 'pricelist.inPrice', 'In Price', 'pricelist'),
+('en', 'pricelist.price', 'Price', 'pricelist'),
+('en', 'pricelist.unit', 'Unit', 'pricelist'),
+('en', 'pricelist.inStock', 'In Stock', 'pricelist'),
+('en', 'pricelist.description', 'Description', 'pricelist'),
+('en', 'pricelist.loading', 'Loading...', 'pricelist'),
+('en', 'pricelist.error', 'Error', 'pricelist'),
+
+-- Pricelist (Swedish)
+('sv', 'pricelist.searchArticleNo', 'Sök artikelnummer...', 'pricelist'),
+('sv', 'pricelist.searchProduct', 'Sök produkt...', 'pricelist'),
+('sv', 'pricelist.newProduct', 'Ny produkt', 'pricelist'),
+('sv', 'pricelist.printList', 'Skriv ut lista', 'pricelist'),
+('sv', 'pricelist.advancedMode', 'Avancerat läge', 'pricelist'),
+('sv', 'pricelist.articleNo', 'Artikelnummer', 'pricelist'),
+('sv', 'pricelist.productService', 'Produkt/Tjänst', 'pricelist'),
+('sv', 'pricelist.inPrice', 'Inköpspris', 'pricelist'),
+('sv', 'pricelist.price', 'Pris', 'pricelist'),
+('sv', 'pricelist.unit', 'Enhet', 'pricelist'),
+('sv', 'pricelist.inStock', 'I lager', 'pricelist'),
+('sv', 'pricelist.description', 'Beskrivning', 'pricelist'),
+('sv', 'pricelist.loading', 'Laddar...', 'pricelist'),
+('sv', 'pricelist.error', 'Fel', 'pricelist')
+
+ON CONFLICT (language_code, translation_key) DO NOTHING;
+
+-- ============================================
 -- SEED DATA: PRODUCTS
 -- ============================================
 INSERT INTO products (user_id, article_no, name, in_price, price, unit, in_stock, description) VALUES

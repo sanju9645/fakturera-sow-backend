@@ -1,9 +1,6 @@
 import { query } from '../../config/db.js';
 
 export class Product {
-  /**
-   * Get all products for a specific user
-   */
   static async findByUserId(userId) {
     const result = await query(
       `SELECT id, article_no, name, in_price, price, unit, in_stock, description, created_at, updated_at
@@ -16,9 +13,6 @@ export class Product {
     return result.rows;
   }
 
-  /**
-   * Get a product by ID and user ID
-   */
   static async findByIdAndUserId(productId, userId) {
     const result = await query(
       `SELECT id, article_no, name, in_price, price, unit, in_stock, description, created_at, updated_at
@@ -65,9 +59,6 @@ export class Product {
     return result.rows[0];
   }
 
-  /**
-   * Update a product
-   */
   static async update(productId, userId, productData) {
     const {
       articleNo,
@@ -90,9 +81,6 @@ export class Product {
     return result.rows[0] || null;
   }
 
-  /**
-   * Delete a product
-   */
   static async delete(productId, userId) {
     const result = await query(
       `DELETE FROM products
@@ -103,4 +91,3 @@ export class Product {
     return result.rowCount > 0;
   }
 }
-

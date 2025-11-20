@@ -3,7 +3,6 @@ import jwt from 'jsonwebtoken';
 class AuthMiddleware {
   static async authenticate(req, res, next) {
     try {
-      // Get token from header
       const authHeader = req.headers.authorization;
       
       if (!authHeader) {
@@ -13,7 +12,6 @@ class AuthMiddleware {
         });
       }
       
-      // Extract token (format: "Bearer <token>")
       const token = authHeader.startsWith('Bearer ') 
         ? authHeader.slice(7) 
         : authHeader;
@@ -25,10 +23,8 @@ class AuthMiddleware {
         });
       }
       
-      // Verify token
       const decoded = jwt.verify(token, process.env.JWT_SECRET);
       
-      // Add user info to request
       req.user = decoded;
       next();
     } catch (error) {

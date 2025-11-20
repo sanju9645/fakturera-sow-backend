@@ -21,7 +21,6 @@ pool.on('error', (err) => {
   process.exit(-1);
 });
 
-// Connect to database on server start
 export const connectDatabase = async () => {
   try {
     const result = await pool.query('SELECT NOW()');
@@ -33,7 +32,6 @@ export const connectDatabase = async () => {
   }
 };
 
-// Check if database is connected
 export const checkDatabaseConnection = async () => {
   try {
     const result = await pool.query('SELECT 1');
@@ -44,7 +42,6 @@ export const checkDatabaseConnection = async () => {
   }
 };
 
-// Query helper function
 export const query = async (text, params) => {
   try {
     const res = await pool.query(text, params);
@@ -55,13 +52,11 @@ export const query = async (text, params) => {
   }
 };
 
-// Get a client from the pool (for transactions)
 export const getClient = async () => {
   const client = await pool.connect();
   const query = client.query.bind(client);
   const release = client.release.bind(client);
   
-  // Set a timeout of 5 seconds, after which we will log this client's last query
   const timeout = setTimeout(() => {
     console.error('A client has been checked out for more than 5 seconds!');
     console.error(`The last executed query on this client was: ${client.lastQuery}`);
